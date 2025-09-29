@@ -1,3 +1,4 @@
+
 import {z} from "zod"
 
 
@@ -5,16 +6,18 @@ import {z} from "zod"
 export const createCampaignRequestSchema = z.object({
     name: z.string(),
     description: z.string(),
-    startDate: z.string(), // nessa ele ira receber a string e converter dps no codigo
-    //endDate: z.coerce.date().optional // aqui dois métodos de fazer o date, nessa ele vai tentar converter para date
-    endDate: z.string()
+    //startDate: z.string(), // nessa ele ira receber a string e converter dps no codigo
+    startDate: z.coerce.date(),
+    endDate: z.coerce.date().optional() // aqui dois métodos de fazer o date, nessa ele vai tentar converter para date
+    //endDate: z.string()
 })
 
 export const updateCampaignRequestSchema = z.object({
     name: z.string().optional(),
     description: z.string().optional(),
-    startDate: z.string().optional(),
-    endDate: z.string().optional()
+    //startDate: z.string().optional(),
+    startDate: z.coerce.date().optional(),
+    endDate: z.coerce.date().optional()
 })
 
 
